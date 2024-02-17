@@ -1,10 +1,10 @@
 import type { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
+import { environment } from '../../../environments/environment';
 import { StorageService } from '../services/storage.service';
-import { IJwtToken } from '../models/response/jwt-token.model';
-import { environment } from '../../environments/environment';
+import { IJwtToken } from '../../data/authentication-datasource/models/jwt-token.model';
 
-export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
+export const setAuthorizationHeadersInterceptor: HttpInterceptorFn = (req, next) => {
 
   const storageService = inject(StorageService);
   const jwt: IJwtToken = storageService.getSessionItem("jwt");

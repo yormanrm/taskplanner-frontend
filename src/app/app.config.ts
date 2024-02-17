@@ -3,14 +3,15 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
-import { tokenInterceptor } from './interceptors/token.interceptor';
+import { setAuthorizationHeadersInterceptor } from './core/interceptors/set-authorization-headers.interceptor';
+import { expirationTokenInterceptor } from './core/interceptors/expiration-token.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(
       withFetch(),
-      withInterceptors([tokenInterceptor])
+      withInterceptors([setAuthorizationHeadersInterceptor, expirationTokenInterceptor])
     )
   ]
 };

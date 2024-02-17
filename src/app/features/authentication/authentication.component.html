@@ -1,0 +1,43 @@
+<h1>
+    {{registerMode() ? 'Create account' : 'Log In'}}
+</h1>
+
+@if(registerMode()){
+    <form [formGroup]="formRegister" (keyup.enter)="toDoAction()">
+        <div>
+            <label for="firstname-register">First name</label>
+            <input id="firstname-register" type="text" formControlName="firstname">
+        </div>
+        <div>
+            <label for="lastname-register">Last name</label>
+            <input id="lastname-register" type="text" formControlName="lastname">
+        </div>
+        <div>
+            <label for="email-register">Email</label>
+            <input id="email-register" type="email" formControlName="email">
+        </div>
+        <div>
+            <label for="password-register">Password</label>
+            <input id="password-register" type="password" formControlName="password">
+        </div>
+    </form>
+} @else {
+    <form [formGroup]="formLogin" (keyup.enter)="toDoAction()">
+        <div>
+            <label for="email-login">Email</label>
+            <input id="email-login" type="email" formControlName="email">
+        </div>
+        <div>
+            <label for="password-login">Password</label>
+            <input id="password-login" type="password" formControlName="password">
+        </div>
+    </form>
+}
+
+<button (click)="toDoAction()" [disabled]="registerMode() ? !formRegister.valid : !formLogin.valid">
+    {{registerMode() ? 'Sign up' : 'Log In'}}
+</button>
+
+<button (click)="changeAuthenticationMode()">
+    {{registerMode() ? 'Do you have an account?, log in instead' : 'Create new account'}}
+</button>
