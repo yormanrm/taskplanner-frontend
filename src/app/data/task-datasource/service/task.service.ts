@@ -18,7 +18,7 @@ export class TaskService {
     return this.http.post<ITask>(this.url + "/save", body);
   }
 
-  getAllTasks(): Observable<ITask[]> {
+  getTasks(): Observable<ITask[]> {
     return this.http.get<ITask[]>(this.url + "/get/all");
   }
 
@@ -35,6 +35,11 @@ export class TaskService {
   getTaskBySearch(search: string): Observable<ITask[]> {
     const params = this.paramsBuilder.builder({ search });
     return this.http.get<ITask[]>(this.url + "/get/bySearch", { params: params });
+  }
+
+  getTaskByDatesRange(startDate: string, endDate: string): Observable<ITask[]> {
+    const params = this.paramsBuilder.builder({ startDate, endDate });
+    return this.http.get<ITask[]>(this.url + "/get/byDatesRange", { params: params });
   }
 
   updateTaskStatus(id: number, status: string): Observable<any> {
