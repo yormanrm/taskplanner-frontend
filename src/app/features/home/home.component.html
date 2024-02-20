@@ -1,6 +1,7 @@
 <section class="wrapper">
 
     <section class="filters-wrapper">
+
         <div class="search-bar-wrapper">
             <div class="search-bar">
                 <input type="text" placeholder="Search" (input)="onTypeSearchBar($event)">
@@ -28,9 +29,11 @@
             <button (click)="filterByDatesRange()" [disabled]="startDate === '' && endDate === ''">set Dates
                 Range</button>
         </div>
+        
     </section>
 
     <section class="task-wrapper">
+
         @for (task of tasks(); track $index) {
         <div class="task">
             <p>Task name: {{task.name}}</p>
@@ -40,6 +43,7 @@
         } @empty {
         <h2>No tasks</h2>
         }
+
     </section>
 
 </section>
