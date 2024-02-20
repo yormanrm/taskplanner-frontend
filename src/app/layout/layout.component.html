@@ -1,6 +1,8 @@
 <header>
-    <button (click)="closeSession()">Close session</button>
+    <button class="button-link" (click)="closeSession()">Close session</button>
 </header>
-<main>
-    <router-outlet></router-outlet>
+<main class="h-screen flex justify-center items-center">
+    <div class="bg-white rounded-lg w-1/2 p-5 shadow-md">
+        <router-outlet></router-outlet>
+    </div>
 </main>

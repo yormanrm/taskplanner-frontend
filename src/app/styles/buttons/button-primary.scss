@@ -1,0 +1,28 @@
+.button-primary-enabled {
+    @apply 
+        w-full
+        rounded-lg
+        bg-indigo-500
+        text-white
+        text-center
+        font-bold
+        py-2
+        px-4
+        focus:outline-none
+        hover:bg-indigo-600;
+}
+
+.button-primary-disabled {
+    @apply 
+        w-full
+        rounded-lg 
+        bg-indigo-500
+        opacity-60 
+        text-white
+        text-center 
+        font-bold 
+        py-2 
+        px-4  
+        focus:outline-none 
+        cursor-default;
+}
