@@ -4,7 +4,6 @@ import { TaskService } from '../../data/task-datasource/service/task.service';
 import { ITask } from '../../data/task-datasource/models/task.model';
 import { FormsModule } from '@angular/forms';
 import { sorting } from '../../shared/utils/sorting-function';
-import { formatDate } from '../../shared/utils/format-dates.function';
 
 @Component({
   selector: 'app-home',
