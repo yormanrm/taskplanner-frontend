@@ -1,37 +1,40 @@
 <main>
     <section id="authentication-wrapper">
-        <h1 id="form-title-wrapper" class="text-4xl text-center font-bold text-gray-800 mb-4">
-            {{registerMode() ? 'Create account' : 'Log In'}}
-        </h1>
-    
-        @if(registerMode()){
-        <form id="form-register-wrapper" [formGroup]="formRegister" (keyup.enter)="toDoAction()">
-            <input placeholder="First name" class="general-input" id="firstname-register" type="text"
-                formControlName="firstname">
-            <input placeholder="Last name" class="general-input" id="lastname-register" type="text"
-                formControlName="lastname">
-            <input placeholder="Email" class="general-input" id="email-register" type="email" formControlName="email">
-            <input placeholder="Password" class="general-input" id="password-register" type="password"
-                formControlName="password">
-        </form>
-        } @else {
-        <form id="form-login-wrapper" [formGroup]="formLogin" (keyup.enter)="toDoAction()">
-            <input placeholder="Email" class="general-input" id="email-login" type="email" formControlName="email">
-            <input placeholder="Password" class="general-input" id="password-login" type="password"
-                formControlName="password">
-        </form>
-        }
-    
-        <div id="buttons-wrapper">
-            <button
-                [ngClass]="{'button-primary-enabled' : registerMode() ? formRegister.valid : formLogin.valid, 'button-primary-disabled' : registerMode() ? !formRegister.valid : !formLogin.valid}"
-                (click)="toDoAction()" [disabled]="registerMode() ? !formRegister.valid : !formLogin.valid">
-                {{registerMode() ? 'Sign up' : 'Log In'}}
-            </button>
-    
-            <button id="change-mode-button" class="button-link" (click)="changeAuthenticationMode()">
-                {{registerMode() ? 'Do you have an account?, log in instead' : 'Create new account'}}
-            </button>
+        <div id="authentication-content">
+            <h1 id="form-title-wrapper" class="text-4xl text-center font-bold text-gray-800 mb-10">
+                {{registerMode() ? 'Create account' : 'Log In'}}
+            </h1>
+        
+            @if(registerMode()){
+            <form id="form-register-wrapper" [formGroup]="formRegister" (keyup.enter)="toDoAction()">
+                <input placeholder="First name" class="general-input w-full mb-5" id="firstname-register" type="text"
+                    formControlName="firstname">
+                <input placeholder="Last name" class="general-input w-full mb-5" id="lastname-register" type="text"
+                    formControlName="lastname">
+                <input placeholder="Email" class="general-input" id="email-register" type="email" formControlName="email">
+                <input placeholder="Password" class="general-input w-full mb-5" id="password-register" type="password"
+                    formControlName="password">
+            </form>
+            } @else {
+            <form id="form-login-wrapper" [formGroup]="formLogin" (keyup.enter)="toDoAction()">
+                <input placeholder="Email" class="general-input w-full mb-5" id="email-login" type="email" formControlName="email">
+                <input placeholder="Password" class="general-input w-full mb-5" id="password-login" type="password"
+                    formControlName="password">
+            </form>
+            }
+        
+            <div id="buttons-wrapper">
+                <button
+                    class="w-full"
+                    [ngClass]="{'button-primary-enabled' : registerMode() ? formRegister.valid : formLogin.valid, 'button-primary-disabled' : registerMode() ? !formRegister.valid : !formLogin.valid}"
+                    (click)="toDoAction()" [disabled]="registerMode() ? !formRegister.valid : !formLogin.valid">
+                    {{registerMode() ? 'Sign up' : 'Log In'}}
+                </button>
+        
+                <button id="change-mode-button" class="button-link w-full" (click)="changeAuthenticationMode()">
+                    {{registerMode() ? 'Do you have an account?, log in instead' : 'Create new account'}}
+                </button>
+            </div>
         </div>
     </section>
 </main>

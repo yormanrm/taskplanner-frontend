@@ -1,10 +1,15 @@
 main {
     @apply h-screen flex justify-center items-center;
     #authentication-wrapper {
-        @apply bg-white rounded-lg w-1/3 p-5 shadow-md;
-        #buttons-wrapper {
-            #change-mode-button {
-                @apply mt-3;
+        height: 30rem;
+        @apply flex items-center justify-center bg-white rounded-lg shadow-md w-fit;
+        #authentication-content {
+            padding: 1.25rem;
+            #buttons-wrapper {
+                @apply mt-10;
+                #change-mode-button {
+                    @apply mt-3;
+                }
             }
         }
     }

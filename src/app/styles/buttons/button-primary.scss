@@ -1,6 +1,5 @@
 .button-primary-enabled {
-    @apply 
-        w-full
+    @apply
         rounded-lg
         bg-indigo-500
         text-white
@@ -13,8 +12,7 @@
 }
 
 .button-primary-disabled {
-    @apply 
-        w-full
+    @apply
         rounded-lg 
         bg-indigo-500
         opacity-60 

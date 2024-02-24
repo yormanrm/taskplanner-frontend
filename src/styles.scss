@@ -5,9 +5,10 @@
 
 @import './app//styles/tailwind-index';
 
-html {
+html, body {
     font-family: "Plus Jakarta Sans", sans-serif !important;
     font-optical-sizing: auto !important;
     font-style: normal !important;
-    background-color: rgb(243 244 246) !important;
+    background: linear-gradient(to bottom, rgb(99 102 241) 32%, rgb(243 244 246) 30%);
+    background-attachment: fixed !important;
 }

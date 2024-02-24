@@ -1,18 +1,57 @@
-<!-- <header>
-    <button class="button-link" (click)="closeSession()">Close session</button>
-</header>
-<main class="h-screen flex justify-center items-center">
-    <div class="bg-white rounded-lg w-1/2 p-5 shadow-md">
-        <router-outlet></router-outlet>
-    </div>
-</main> -->
-<div class="bg-main">
-    <header>
-        <button class="button-link" (click)="closeSession()">Close session</button>
-    </header>
-    <main class="h-screen flex justify-center items-center">
-        <div class="bg-white rounded-lg w-1/2 p-5 shadow-md">
-            <router-outlet></router-outlet>
+<aside>
+    <section class="close-mobile-wrapper" hidden>
+        <button class="p-2">
+            <img src="../../assets/svg-icons/x-close.svg">
+        </button>
+    </section>
+
+    <section class="sidebar-wrapper">
+        <div class="title-wrapper flex justify-center gap-1.5">
+            <img src="../../assets/svg-icons/clipboard.svg">
+            <h3 class="font-semibold text-2xl text-slate-700 whitespace-nowrap tracking-tight">
+                Task planner
+            </h3>
         </div>
-    </main>
-</div>
+        <hr class="my-6">
+        <div class="links-wrapper">
+            <button class="flex w-full gap-3 mb-8">
+                <img src="../../assets/svg-icons/home-line.svg">
+                <p>Dashboard</p>
+            </button>
+            <button class="flex w-full gap-3 mb-8">
+                <img src="../../assets/svg-icons/clock.svg">
+                <p>To do</p>
+            </button>
+            <button class="flex w-full gap-3 mb-8">
+                <img src="../../assets/svg-icons/loading-01.svg">
+                <p>Ongoing</p>
+            </button>
+            <button class="flex w-full gap-3">
+                <img src="../../assets/svg-icons/check-circle.svg">
+                <p>Completed</p>
+            </button>
+        </div>
+    </section>
+
+    <section class="sign-out-wrapper">
+        <button class="button-primary-enabled w-full" (click)="signOut()">Sign out</button>
+    </section>
+</aside>
+
+<main>
+    <section class="search-bar-wrapper">
+        <div class="search-bar">
+            <input placeholder="Search" class="general-input" type="text">
+            <button class="search-bar-button">
+                <img src="../../assets/svg-icons/search-lg.svg">
+            </button>
+        </div>
+    </section>
+    <section class="router-outlet-wrapper">
+        <router-outlet></router-outlet>
+    </section>
+</main>
+
+<button class="fixed bg-white p-5 shadow-md bottom-8 right-10 text-xl z-990 rounded-full">
+    <img src="../../assets/svg-icons/plus.svg" width="34">
+</button>
