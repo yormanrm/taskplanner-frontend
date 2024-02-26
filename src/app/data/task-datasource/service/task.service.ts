@@ -47,6 +47,11 @@ export class TaskService {
     return this.http.post<any>(this.url + "/updateStatus", { params: params });
   }
 
+  updateTaskArchived(id: number, archived: boolean): Observable<any> {
+    const params = this.paramsBuilder.builder({ id, archived });
+    return this.http.post<any>(this.url + "/updateArchived", { params: params });
+  }
+
   deleteATask(id: number): Observable<any> {
     const params = this.paramsBuilder.builder({ id });
     return this.http.delete<any>(this.url + "/delete", { params: params });
