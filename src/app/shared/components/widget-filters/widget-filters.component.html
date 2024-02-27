@@ -1,0 +1,59 @@
+<!-- <section class="filters-wrapper">
+
+    <div class="search-bar-wrapper">
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search" (input)="onTypeSearchBar($event)">
+        </div>
+        <div class="search-button">
+            <button (click)="filterBySearchBar()">Search</button>
+        </div>
+
+    </div>
+
+    <div class="status-wrapper">
+
+        <input type="radio" id="toDoOption" name="status" value="TODO" (change)="filterByStatus($event)" />
+        <label for="toDoOption">To Do</label>
+        <input type="radio" id="ongoingOption" name="status" value="ONGOING" (change)="filterByStatus($event)" />
+        <label for="ongoingOption">Ongoing</label>
+        <input type="radio" id="completedOption" name="status" value="COMPLETED"
+            (change)="filterByStatus($event)" />
+        <label for="completedOption">Completed</label>
+
+    </div>
+
+    <div class="sort-wrapper">
+
+        <button (click)="sortTasks('name', (ascSortDate = !ascSortDate))">By Name</button>
+        <button (click)="sortTasks('date', (ascSortDate = !ascSortDate))">By Date</button>
+
+    </div>
+
+    <div class="date-wrapper">
+
+        <input type="date" id="startDate-picker" name="startDate-picker" [(ngModel)]="startDate" [max]="endDate" />
+        <input type="date" id="endDate-picker" name="endDate-picker" [(ngModel)]="endDate" [min]="startDate" />
+        <button (click)="filterByDatesRange()" [disabled]="startDate === '' && endDate === ''">set DatesRange</button>
+
+    </div>
+
+</section> -->
+
+
+<section class="widgets-wrapper">
+    <div class="sort-widget">
+        <button (click)="taskLocalService.sortTasks('name', (taskLocalService.ascSortName = !taskLocalService.ascSortName))">
+            <span>By name</span>
+            <img [src]="taskLocalService.ascSortName ? '../../../../assets/svg-icons/arrow-narrow-down.svg' : '../../../../assets/svg-icons/arrow-narrow-up.svg'" alt="">
+        </button>
+        <button (click)="taskLocalService.sortTasks('date', (taskLocalService.ascSortDate = !taskLocalService.ascSortDate))">
+            <span>By date</span>
+            <img [src]="taskLocalService.ascSortDate ? '../../../../assets/svg-icons/arrow-narrow-down.svg' : '../../../../assets/svg-icons/arrow-narrow-up.svg'" alt="">
+        </button>
+    </div>
+    <div class="search-bar-widget">
+        <input placeholder="Search" class="general-input" type="text"
+            (keyup)="taskLocalService.onTypeSearchBar($event)">
+    </div>
+</section>

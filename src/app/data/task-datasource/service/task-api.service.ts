@@ -8,7 +8,7 @@ import { ITask } from '../models/task.model';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService {
+export class TaskAPIService {
 
   private url: string = environment.apiUrl + "tasks";
   private http = inject(HttpClient);

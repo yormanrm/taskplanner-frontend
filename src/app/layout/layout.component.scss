@@ -16,22 +16,6 @@ main {
   margin-left: 21.25rem !important;
   @apply relative h-full max-h-screen mt-5 mr-5;
 
-  .search-bar-wrapper {
-    @apply rounded-lg mb-5 flex justify-end items-center;
-
-    .search-bar {
-      .general-input{
-        @apply
-        rounded-r-none;
-      }
-      .search-bar-button {
-        @apply
-          bg-white
-            rounded-r-lg;
-      }
-    }
-  }
-
   .router-outlet-wrapper {
     @apply bg-white rounded-lg p-10 shadow-md;
   }

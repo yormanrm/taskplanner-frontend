@@ -15,7 +15,7 @@
         <hr class="my-6">
         <div class="links-wrapper">
             <button class="flex w-full gap-3 mb-8">
-                <img src="../../assets/svg-icons/home-line.svg">
+                <img src="../../assets/svg-icons/dashboard.svg">
                 <p>Dashboard</p>
             </button>
             <button class="flex w-full gap-3 mb-8">
@@ -26,9 +26,13 @@
                 <img src="../../assets/svg-icons/loading-01.svg">
                 <p>Ongoing</p>
             </button>
-            <button class="flex w-full gap-3">
+            <button class="flex w-full gap-3 mb-8">
                 <img src="../../assets/svg-icons/check-circle.svg">
                 <p>Completed</p>
+            </button>
+            <button class="flex w-full gap-3">
+                <img src="../../assets/svg-icons/archive.svg">
+                <p>Archived</p>
             </button>
         </div>
     </section>
@@ -39,14 +43,7 @@
 </aside>
 
 <main>
-    <section class="search-bar-wrapper">
-        <div class="search-bar">
-            <input placeholder="Search" class="general-input" type="text">
-            <button class="search-bar-button">
-                <img src="../../assets/svg-icons/search-lg.svg">
-            </button>
-        </div>
-    </section>
+    <widget-filters></widget-filters>
     <section class="router-outlet-wrapper">
         <router-outlet></router-outlet>
     </section>
