@@ -6,33 +6,45 @@
     </section>
 
     <section class="sidebar-wrapper">
-        <div class="title-wrapper flex justify-center gap-1.5">
-            <img src="../../assets/svg-icons/clipboard.svg">
+        <div class="title-wrapper flex items-center justify-center gap-1.5">
+            <svg-wrapper [svg]="'../../assets/svg-icons/clipboard.svg'" [color]="'#334155aa'" [width]="'2.75rem'"
+                [key]="'titleIcon'">
+            </svg-wrapper>
             <h3 class="font-semibold text-2xl text-slate-700 whitespace-nowrap tracking-tight">
                 Task planner
             </h3>
         </div>
         <hr class="my-6">
         <div class="links-wrapper">
-            <button class="flex w-full gap-3 mb-8">
-                <img src="../../assets/svg-icons/dashboard.svg">
-                <p>Dashboard</p>
+            <button class="flex items-center w-full gap-3 mb-8">
+                <svg-wrapper [svg]="'../../assets/svg-icons/dashboard.svg'" [color]="'#6366f1aa'" [width]="'1.75rem'"
+                    [key]="'linkIcon1'">
+                </svg-wrapper>
+                <p class="text-lg">Dashboard</p>
             </button>
-            <button class="flex w-full gap-3 mb-8">
-                <img src="../../assets/svg-icons/clock.svg">
-                <p>To do</p>
+            <button class="flex items-center w-full gap-3 mb-8">
+                <svg-wrapper [svg]="'../../assets/svg-icons/clock.svg'" [color]="'#ea580caa'" [width]="'1.75rem'"
+                    [key]="'linkIcon2'">
+                </svg-wrapper>
+                <p class="text-lg">To do</p>
             </button>
-            <button class="flex w-full gap-3 mb-8">
-                <img src="../../assets/svg-icons/loading-01.svg">
-                <p>Ongoing</p>
+            <button class="flex items-center w-full gap-3 mb-8">
+                <svg-wrapper [svg]="'../../assets/svg-icons/loading-01.svg'" [color]="'#38bdf8aa'" [width]="'1.75rem'"
+                    [key]="'linkIcon3'">
+                </svg-wrapper>
+                <p class="text-lg">Ongoing</p>
             </button>
-            <button class="flex w-full gap-3 mb-8">
-                <img src="../../assets/svg-icons/check-circle.svg">
-                <p>Completed</p>
+            <button class="flex items-center w-full gap-3 mb-8">
+                <svg-wrapper [svg]="'../../assets/svg-icons/check-circle.svg'" [color]="'#16a34aaa'" [width]="'1.75rem'"
+                    [key]="'linkIcon4'">
+                </svg-wrapper>
+                <p class="text-lg">Completed</p>
             </button>
-            <button class="flex w-full gap-3">
-                <img src="../../assets/svg-icons/archive.svg">
-                <p>Archived</p>
+            <button class="flex items-center w-full gap-3">
+                <svg-wrapper [svg]="'../../assets/svg-icons/archive.svg'" [color]="'#ca8a04aa'" [width]="'1.75rem'"
+                    [key]="'linkIcon5'">
+                </svg-wrapper>
+                <p class="text-lg">Archived</p>
             </button>
         </div>
     </section>

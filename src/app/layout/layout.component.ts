@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { StorageService } from '../core/services/storage.service';
 import { Router, RouterModule } from '@angular/router';
 import { WidgetFiltersComponent } from '../shared/components/widget-filters/widget-filters.component';
+import { SvgWrapperComponent } from '../shared/components/svg-wrapper/svg-wrapper.component';
 
 @Component({
   selector: 'app-layout',
@@ -10,7 +11,8 @@ import { WidgetFiltersComponent } from '../shared/components/widget-filters/widg
   imports: [
     CommonModule,
     RouterModule,
-    WidgetFiltersComponent
+    WidgetFiltersComponent,
+    SvgWrapperComponent
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
