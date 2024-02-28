@@ -2,12 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { TaskLocalService } from '../../../data/task-datasource/service/task-local.service';
 import { SvgWrapperComponent } from '../svg-wrapper/svg-wrapper.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'widget-filters',
   standalone: true,
   imports: [
     CommonModule,
+    FormsModule,
     SvgWrapperComponent
   ],
   templateUrl: './widget-filters.component.html',
