@@ -3,20 +3,17 @@
 
 
     .dates-widget {
-      // input[type="date"]::-webkit-calendar-picker-indicator {
-      //   display: none;
-      // }
+      @apply flex items-center bg-white rounded-lg py-2 px-4;
+      select {
+        color: rgb(156, 171, 199);
+        cursor: pointer;
+        outline: none;
 
-      .general-input {
-        color: #9ca3afaa;
-        text-align: center !important;
-        background: white !important;
+        option {
+          color: rgb(0, 0, 0);
+          cursor: pointer;
+        }
       }
-      span {
-        color: #9ca3afaa;
-      }
-
-      @apply flex items-center gap-3 bg-white rounded-lg pe-4;
     }
 
     .sort-widget {

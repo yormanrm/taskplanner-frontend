@@ -1,16 +1,3 @@
-<!-- <section class="filters-wrapper">
-
-
-    <div class="date-wrapper">
-
-        <input type="date" id="startDate-picker" name="startDate-picker" [(ngModel)]="startDate" [max]="endDate" />
-        <input type="date" id="endDate-picker" name="endDate-picker" [(ngModel)]="endDate" [min]="startDate" />
-        <button (click)="filterByDatesRange()" [disabled]="startDate === '' && endDate === ''">set DatesRange</button>
-
-    </div>
-
-</section> -->
-
 <section class="widgets-wrapper">
 
     <div class="sort-widget">
@@ -18,33 +5,47 @@
             (click)="taskLocalService.sortTasks('name', (taskLocalService.ascSortName = !taskLocalService.ascSortName))">
             <span>Order by name</span>
             <svg-wrapper [color]="'#9ca3afaa'" [key]="'ascSortName'" [width]="'1rem'"
-                [svg]="taskLocalService.ascSortName ? '../../../../assets/svg-icons/arrow-narrow-down.svg' : '../../../../assets/svg-icons/arrow-narrow-up.svg'"></svg-wrapper>
+                [svg]="taskLocalService.ascSortName ? '../../../../assets/svg-icons/arrow-narrow-up.svg' : '../../../../assets/svg-icons/arrow-narrow-down.svg'"></svg-wrapper>
 
         </button>
         <button class="flex items-center"
             (click)="taskLocalService.sortTasks('date', (taskLocalService.ascSortDate = !taskLocalService.ascSortDate))">
             <span>Order by date</span>
             <svg-wrapper [color]="'#9ca3afaa'" [key]="'ascSortDate'" [width]="'1rem'"
-                [svg]="taskLocalService.ascSortDate ? '../../../../assets/svg-icons/arrow-narrow-down.svg' : '../../../../assets/svg-icons/arrow-narrow-up.svg'"></svg-wrapper>
+                [svg]="taskLocalService.ascSortDate ? '../../../../assets/svg-icons/arrow-narrow-up.svg' : '../../../../assets/svg-icons/arrow-narrow-down.svg'"></svg-wrapper>
         </button>
     </div>
 
     <div class="dates-widget">
 
-        <input class="general-input" type="date" id="startDate-picker" name="startDate-picker" [(ngModel)]="taskLocalService.startDate"
-            [max]="taskLocalService.endDate" />
-        <span>To</span>
-        <input class="general-input" type="date" id="endDate-picker" name="endDate-picker" [(ngModel)]="taskLocalService.endDate"
-            [min]="taskLocalService.startDate" />
-        <button (click)="taskLocalService.filterByDatesRange()"
-            [disabled]="taskLocalService.startDate === '' && taskLocalService.endDate === ''">
-            <svg-wrapper 
-                [color]="'#6366f1aa'"
-                [key]="'ascSortDate'"
-                [width]="'1rem'"
-                [svg]="'../../../../assets/svg-icons/calendar.svg'">
-            </svg-wrapper>
-        </button>
+        <select #dateSelect (change)="onChangeDateFilter($event)">
+            <option value="" selected="true" disabled>Date range picker</option>
+            <option value="today">Today</option>
+            <option value="yesterday">Yesterday</option>
+            <option value="weekA">This week</option>
+            <option value="weekB">Last week</option>
+            <option value="monthA">This month</option>
+            <option value="monthB">Last month</option>
+            <option value="year">This year</option>
+            <option value="range">Custom range</option>
+        </select>
+
+        <div *ngIf="showCalendar" class="fixed z-50 inset-0 flex items-center justify-center bg-indigo-900 bg-opacity-50">
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <div class="inputs-wrapper mb-5 flex justify-between items-center gap-3">
+                    <input type="date" class="general-input w-full" [(ngModel)]="startRange"
+                        [max]="endRange === '' ? f.formatDate(today) : endRange" />
+                    <input type="date" class="general-input w-full" [(ngModel)]="endRange" [max]="f.formatDate(today)"
+                        [min]="startRange" />
+                </div>
+                <div class="buttons-wrapper flex justify-end items-center gap-3">
+                    <button class="button-primary-enabled" (click)="setRangeDates()">Search between these dates</button>
+                    <button class="button-primary-enabled" [hidden]="startRange === '' && endRange === ''"
+                        (click)="clearRangeDates()">Clear</button>
+                    <button class="button-secondary-enabled" (click)="closeModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
 
     </div>
 

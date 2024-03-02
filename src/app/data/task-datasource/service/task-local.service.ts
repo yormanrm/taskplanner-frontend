@@ -11,8 +11,6 @@ export class TaskLocalService {
 
   public tasks: WritableSignal<ITask[]> = signal<ITask[]>([]);
   public searchText: WritableSignal<string> = signal<string>("");
-  public startDate: string = '';
-  public endDate: string = '';
   public ascSortName: boolean = false;
   public ascSortDate: boolean = false;
 
@@ -24,7 +22,7 @@ export class TaskLocalService {
     this.taskApiService.getTasks().subscribe({
       next: (data: ITask[]) => {
         this.tasks.set(data);
-        this.sortTasks("date", this.ascSortDate);
+        this.sortTasks("date", false);
       }, error: (err: any) => {
         console.log(err);
       }
@@ -47,6 +45,7 @@ export class TaskLocalService {
     this.taskApiService.getTaskBySearch(this.searchText()).subscribe({
       next: (data: ITask[]) => {
         this.tasks.set(data);
+        this.sortTasks("date", false);
       }, error: (err: any) => {
         console.log(err);
       }
@@ -58,16 +57,18 @@ export class TaskLocalService {
     this.taskApiService.getTaskByStatus(option.value).subscribe({
       next: (data: ITask[]) => {
         this.tasks.set(data);
+        this.sortTasks("date", false);
       }, error: (err: any) => {
         console.log(err);
       }
     });
   }
 
-  filterByDatesRange() {
-    this.taskApiService.getTaskByDatesRange(this.startDate, this.endDate).subscribe({
+  filterByDatesRange(startDate: string, endDate: string) {
+    this.taskApiService.getTaskByDatesRange(startDate, endDate).subscribe({
       next: (data: ITask[]) => {
         this.tasks.set(data);
+        this.sortTasks("date", false);
       }, error: (err: any) => {
         console.log(err);
       }
@@ -91,3 +92,4 @@ export class TaskLocalService {
   }
 
 }
+
