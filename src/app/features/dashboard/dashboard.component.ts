@@ -10,9 +10,9 @@ import { TaskLocalService } from '../../data/task-datasource/service/task-local.
     CommonModule,
     FormsModule
   ],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss'
 })
-export class HomeComponent {
+export class DashboardComponent {
   public taskLocalService = inject(TaskLocalService);
 }
