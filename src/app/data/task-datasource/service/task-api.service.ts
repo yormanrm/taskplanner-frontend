@@ -8,7 +8,7 @@ import { ITask } from '../models/task.model';
 @Injectable({
   providedIn: 'root'
 })
-export class TaskService {
+export class TaskAPIService {
 
   private url: string = environment.apiUrl + "tasks";
   private http = inject(HttpClient);
@@ -45,6 +45,11 @@ export class TaskService {
   updateTaskStatus(id: number, status: string): Observable<any> {
     const params = this.paramsBuilder.builder({ id, status });
     return this.http.post<any>(this.url + "/updateStatus", { params: params });
+  }
+
+  updateTaskArchived(id: number, archived: boolean): Observable<any> {
+    const params = this.paramsBuilder.builder({ id, archived });
+    return this.http.post<any>(this.url + "/updateArchived", { params: params });
   }
 
   deleteATask(id: number): Observable<any> {

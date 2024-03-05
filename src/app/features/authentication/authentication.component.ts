@@ -10,7 +10,7 @@ import { IJwtToken } from '../../data/authentication-datasource/models/jwt-token
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-authentication',
+  selector: 'feature-authentication',
   standalone: true,
   imports: [
     CommonModule,
