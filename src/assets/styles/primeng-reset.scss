@@ -1,0 +1,13 @@
+/* Order */
+@layer reset, primeng;
+
+/* Reset CSS */
+@layer reset {
+
+    button, input {
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+}
