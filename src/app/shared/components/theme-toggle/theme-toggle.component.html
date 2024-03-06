@@ -1,5 +1,3 @@
-<div class="dark-mode-toggle-wrapper">
-    <div class="dark-mode-toggle">
-        <p-inputSwitch [(ngModel)]="themeService.darkMode" (onChange)="themeService.changeTheme()"></p-inputSwitch>
-    </div>
+<div class="tw-flex tw-justify-end">
+    <input class="bulb" type="checkbox" (click)="switchTheme($event)" [checked]="themeService.darkMode">
 </div>
