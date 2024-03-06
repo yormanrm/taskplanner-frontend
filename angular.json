@@ -30,7 +30,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/primeng.min.css",
+              {
+                "input": "src/app/core/themes/lara-light-indigo.scss",
+                "bundleName": "lara-light-indigo",
+                "inject": false
+              },
+              {
+                "input": "src/app/core/themes/lara-dark-indigo.scss",
+                "bundleName": "lara-dark-indigo",
+                "inject": false
+              }
             ],
             "scripts": []
           },

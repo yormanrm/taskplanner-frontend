@@ -1,0 +1,10 @@
+.dark-mode-toggle-wrapper {
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    margin: 0.75rem;
+    .dark-mode-toggle {
+        display: flex;
+        align-items: center;
+    }
+}
