@@ -1,0 +1,11 @@
+:host ::ng-deep main {
+    @apply tw-h-screen tw-flex tw-justify-center tw-items-center;
+
+    .p-card {
+        .p-card-footer {
+            .p-button {
+                @apply tw-w-full tw-my-2;
+            }
+        }
+    }
+}

@@ -1,43 +1,64 @@
-<h1>
-    {{registerMode() ? 'Create account' : 'Log In'}}
-</h1>
+<main>
+    <p-card header="{{registerMode() ? 'Create account' : 'Log In'}}">
 
-@if(registerMode()){
-    <form [formGroup]="formRegister" (keyup.enter)="toDoAction()">
-        <div>
-            <label for="firstname-register">First name</label>
-            <input id="firstname-register" type="text" formControlName="firstname">
-        </div>
-        <div>
-            <label for="lastname-register">Last name</label>
-            <input id="lastname-register" type="text" formControlName="lastname">
-        </div>
-        <div>
-            <label for="email-register">Email</label>
-            <input id="email-register" type="email" formControlName="email">
-        </div>
-        <div>
-            <label for="password-register">Password</label>
-            <input id="password-register" type="password" formControlName="password">
-        </div>
-    </form>
-} @else {
-    <form [formGroup]="formLogin" (keyup.enter)="toDoAction()">
-        <div>
-            <label for="email-login">Email</label>
-            <input id="email-login" type="email" formControlName="email">
-        </div>
-        <div>
-            <label for="password-login">Password</label>
-            <input id="password-login" type="password" formControlName="password">
-        </div>
-    </form>
-}
+        @if(registerMode()){
+        <form [formGroup]="formRegister" (keyup.enter)="toDoAction()">
+            <span class="p-float-label p-input-filled tw-mt-5 tw-mb-9">
+                <input class="tw-w-full" pInputText id="firstname-register" type="text" formControlName="firstname" />
+                <label for="firstname-register">First name</label>
+            </span>
 
-<button (click)="toDoAction()" [disabled]="registerMode() ? !formRegister.valid : !formLogin.valid">
-    {{registerMode() ? 'Sign up' : 'Log In'}}
-</button>
+            <span class="p-float-label p-input-filled tw-mb-9">
+                <input class="tw-w-full" pInputText id="lastname-register" type="text" formControlName="lastname" />
+                <label for="lastname-register">Last name</label>
+            </span>
 
-<button (click)="changeAuthenticationMode()">
-    {{registerMode() ? 'Do you have an account?, log in instead' : 'Create new account'}}
-</button>
+            <span class="p-float-label p-input-filled tw-mb-9">
+                <input class="tw-w-full" pInputText id="email-register" type="email" formControlName="email" />
+                <label for="email-register">Email</label>
+            </span>
+
+            <span class="p-float-label p-input-filled">
+                <p-password id="password-register" formControlName="password" [toggleMask]="true"
+                    [inputStyle]="{'width':'100%'}"
+                    styleClass="p-password p-component p-inputwrapper p-input-icon-right" [style]="{'width':'100%'}">
+                    <ng-template pTemplate="footer">
+                        <p-divider></p-divider>
+                        <p class="tw-mt-2">Suggestions</p>
+                        <ul class="tw-pl-2 tw-ml-2 tw-mt-0" style="line-height: 1.5">
+                            <li>At least one lowercase</li>
+                            <li>At least one uppercase</li>
+                            <li>At least one numeric</li>
+                            <li>At least one symbol</li>
+                            <li>Minimum 8 characters</li>
+                        </ul>
+                    </ng-template>
+                </p-password>
+                <label for="password-register">Password</label>
+            </span>
+        </form>
+        } @else {
+        <form [formGroup]="formLogin" (keyup.enter)="toDoAction()">
+            <span class="p-float-label p-input-filled tw-mt-5 tw-mb-9">
+                <input class="tw-w-full" pInputText id="email-login" type="email" formControlName="email" />
+                <label for="email-login">Email</label>
+            </span>
+            <span class="p-float-label p-input-filled">
+                <input class="tw-w-full" pInputText id="password-login" type="password" formControlName="password" />
+                <label for="password-login">Password</label>
+            </span>
+        </form>
+        }
+
+        <ng-template pTemplate="footer">
+            <p-button label="{{registerMode() ? 'Sign up' : 'Log In'}}" (click)="toDoAction()"
+                [disabled]="registerMode() ? !formRegister.valid : !formLogin.valid">
+            </p-button>
+
+            <p-button [text]="true" [plain]="true"
+                label="{{registerMode() ? 'Do you have an account?, log in instead' : 'Create new account'}}"
+                (click)="changeAuthenticationMode()">
+            </p-button>
+        </ng-template>
+    </p-card>
+</main>

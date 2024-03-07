@@ -8,13 +8,15 @@ import { StorageService } from '../../core/services/storage.service';
 import { AuthenticationService } from '../../data/authentication-datasource/service/authentication.service';
 import { IJwtToken } from '../../data/authentication-datasource/models/jwt-token.model';
 import { Router } from '@angular/router';
+import { PrimeNGModule } from '../../shared/modules/primeng.module';
 
 @Component({
   selector: 'feature-authentication',
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PrimeNGModule
   ],
   templateUrl: './authentication.component.html',
   styleUrl: './authentication.component.scss'
