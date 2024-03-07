@@ -9,6 +9,7 @@ import { AuthenticationService } from '../../data/authentication-datasource/serv
 import { IJwtToken } from '../../data/authentication-datasource/models/jwt-token.model';
 import { Router } from '@angular/router';
 import { PrimeNGModule } from '../../shared/modules/primeng.module';
+import { FormsMessageErrorsService } from '../../shared/services/forms-message-errors.service';
 
 @Component({
   selector: 'feature-authentication',
@@ -30,7 +31,8 @@ export class AuthenticationComponent {
     private authenticationService: AuthenticationService,
     private formInitializerService: FormInitializerService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    public formMessageError: FormsMessageErrorsService
   ) { }
 
   changeAuthenticationMode() {

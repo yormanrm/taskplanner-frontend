@@ -3,15 +3,8 @@
 
         @if(registerMode()){
         <form [formGroup]="formRegister" (keyup.enter)="toDoAction()">
-            <span class="p-float-label p-input-filled tw-mt-5 tw-mb-9">
-                <input class="tw-w-full" pInputText id="firstname-register" type="text" formControlName="firstname" />
-                <label for="firstname-register">First name</label>
-            </span>
+            <!-- 
 
-            <span class="p-float-label p-input-filled tw-mb-9">
-                <input class="tw-w-full" pInputText id="lastname-register" type="text" formControlName="lastname" />
-                <label for="lastname-register">Last name</label>
-            </span>
 
             <span class="p-float-label p-input-filled tw-mb-9">
                 <input class="tw-w-full" pInputText id="email-register" type="email" formControlName="email" />
@@ -35,18 +28,87 @@
                     </ng-template>
                 </p-password>
                 <label for="password-register">Password</label>
-            </span>
+            </span> -->
+            <section class="p-input-filled tw-mb-5">
+                <label for="firstname-register">First name</label>
+                <input class="tw-block tw-w-full tw-my-1" pInputText id="firstname-register"
+                    aria-describedby="firstname-help" type="text" formControlName="firstname"
+                    [ngClass]="{'ng-invalid ng-dirty' : formRegister.controls['firstname'].invalid  && (formRegister.controls['firstname'].dirty || formRegister.controls['firstname'].touched)}" />
+                <small id="email-help" class="p-error"
+                    *ngIf="formRegister.controls['firstname'].invalid  && (formRegister.controls['firstname'].dirty || formRegister.controls['firstname'].touched)">
+                    {{formMessageError.getAuthenticationFormMessageError('firstname', formRegister)}}
+                </small>
+            </section>
+
+            <section class="p-input-filled tw-mb-5">
+                <label for="lastname-register">Last name</label>
+                <input class="tw-block tw-w-full tw-my-1" pInputText id="lastname-register"
+                    aria-describedby="lastname-help" type="text" formControlName="lastname"
+                    [ngClass]="{'ng-invalid ng-dirty' : formRegister.controls['lastname'].invalid  && (formRegister.controls['lastname'].dirty || formRegister.controls['lastname'].touched)}" />
+                <small id="lastname-help" class="p-error"
+                    *ngIf="formRegister.controls['lastname'].invalid  && (formRegister.controls['lastname'].dirty || formRegister.controls['lastname'].touched)">
+                    {{formMessageError.getAuthenticationFormMessageError('lastname', formRegister)}}
+                </small>
+            </section>
+
+            <section class="p-input-filled tw-mb-5">
+                <label for="email-register">Email</label>
+                <input class="tw-block tw-w-full tw-my-1" pInputText id="email-register" aria-describedby="email-help"
+                    type="email" formControlName="email"
+                    [ngClass]="{'ng-invalid ng-dirty' : formRegister.controls['email'].invalid  && (formRegister.controls['email'].dirty || formRegister.controls['email'].touched)}" />
+                <small id="email-help" class="p-error"
+                    *ngIf="formRegister.controls['email'].invalid  && (formRegister.controls['email'].dirty || formRegister.controls['email'].touched)">
+                    {{formMessageError.getAuthenticationFormMessageError('email', formRegister)}}
+                </small>
+            </section>
+
+            <section class="p-input-filled">
+                <div class="tw-mb-1">
+                    <label for="password-register">Password</label>
+                </div>
+                <p-password id="password-register" formControlName="password" [toggleMask]="true" aria-describedby="password-help"
+                    [inputStyle]="{'width':'100%'}"
+                    styleClass="p-password p-component p-inputwrapper p-input-icon-right" [style]="{'width':'100%'}">
+                    <ng-template pTemplate="footer">
+                        <p-divider></p-divider>
+                        <p class="tw-mt-1">Suggestions</p>
+                        <ul class="tw-pl-1 tw-ml-1 tw-mt-0" style="line-height: 1.5">
+                            <li>At least one lowercase</li>
+                            <li>At least one uppercase</li>
+                            <li>At least one numeric</li>
+                            <li>At least one symbol</li>
+                            <li>Minimum 8 characters</li>
+                        </ul>
+                    </ng-template>
+                </p-password>
+                <small id="password-help" class="p-error"
+                    *ngIf="formRegister.controls['password'].invalid  && (formRegister.controls['password'].dirty || formRegister.controls['password'].touched)">
+                    {{formMessageError.getAuthenticationFormMessageError('password', formRegister)}}
+                </small>
+            </section>
         </form>
         } @else {
         <form [formGroup]="formLogin" (keyup.enter)="toDoAction()">
-            <span class="p-float-label p-input-filled tw-mt-5 tw-mb-9">
-                <input class="tw-w-full" pInputText id="email-login" type="email" formControlName="email" />
+            <section class="p-input-filled tw-mb-5">
                 <label for="email-login">Email</label>
-            </span>
-            <span class="p-float-label p-input-filled">
-                <input class="tw-w-full" pInputText id="password-login" type="password" formControlName="password" />
+                <input class="tw-block tw-w-full tw-my-1" pInputText id="email-login" aria-describedby="email-help"
+                    type="email" formControlName="email"
+                    [ngClass]="{'ng-invalid ng-dirty' : formLogin.controls['email'].invalid  && (formLogin.controls['email'].dirty || formLogin.controls['email'].touched)}" />
+                <small id="email-help" class="p-error"
+                    *ngIf="formLogin.controls['email'].invalid  && (formLogin.controls['email'].dirty || formLogin.controls['email'].touched)">
+                    {{formMessageError.getAuthenticationFormMessageError('email', formLogin)}}
+                </small>
+            </section>
+            <section class="p-input-filled">
                 <label for="password-login">Password</label>
-            </span>
+                <input class="tw-block tw-w-full tw-my-1" pInputText id="password-login"
+                    aria-describedby="password-help" type="password" formControlName="password"
+                    [ngClass]="{'ng-invalid ng-dirty' : formLogin.controls['password'].invalid  && (formLogin.controls['password'].dirty || formLogin.controls['password'].touched)}" />
+                <small id="password-help" class="p-error"
+                    *ngIf="formLogin.controls['password'].invalid  && (formLogin.controls['password'].dirty || formLogin.controls['password'].touched)">
+                    {{formMessageError.getAuthenticationFormMessageError('password', formLogin)}}
+                </small>
+            </section>
         </form>
         }
 

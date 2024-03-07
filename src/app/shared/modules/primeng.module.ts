@@ -4,6 +4,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from "primeng/message"; 
 
 @NgModule({
     imports: [
@@ -11,14 +13,18 @@ import { DividerModule } from 'primeng/divider';
         ButtonModule,
         InputTextModule,
         PasswordModule,
-        DividerModule
+        DividerModule,
+        MessagesModule,
+        MessageModule
     ],
     exports: [
         CardModule,
         ButtonModule,
         InputTextModule,
         PasswordModule,
-        DividerModule
+        DividerModule,
+        MessagesModule,
+        MessageModule
     ]
 })
 export class PrimeNGModule { }
