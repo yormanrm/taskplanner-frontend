@@ -10,6 +10,7 @@ import { IJwtToken } from '../../data/authentication-datasource/models/jwt-token
 import { Router } from '@angular/router';
 import { PrimeNGModule } from '../../shared/modules/primeng.module';
 import { FormsMessageErrorsService } from '../../shared/services/forms-message-errors.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'feature-authentication',
@@ -18,6 +19,9 @@ import { FormsMessageErrorsService } from '../../shared/services/forms-message-e
     CommonModule,
     ReactiveFormsModule,
     PrimeNGModule
+  ],
+  providers: [
+    MessageService
   ],
   templateUrl: './authentication.component.html',
   styleUrl: './authentication.component.scss'
@@ -31,6 +35,7 @@ export class AuthenticationComponent {
     private authenticationService: AuthenticationService,
     private formInitializerService: FormInitializerService,
     private storageService: StorageService,
+    private messageService: MessageService,
     private router: Router,
     public formMessageError: FormsMessageErrorsService
   ) { }
@@ -58,7 +63,11 @@ export class AuthenticationComponent {
         });
         this.logIn();
       }, error: (err: any) => {
-        console.log("Error", err);
+        if (err.status === 400) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'The email entered is already registered, instead please log in' });
+        } else {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+        }
       }
     });
   }
@@ -66,11 +75,15 @@ export class AuthenticationComponent {
   logIn() {
     this.authenticationService.login(this.formLogin.value as IUserLogin).subscribe({
       next: (data: IJwtToken) => {
-        alert("Welcome");
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Welcome back!' });
         this.storageService.setSessionItem('jwt', data);
         this.router.navigate(['/']);
       }, error: (err: any) => {
-        console.log("Error", err);
+        if (err.status === 400) {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Incorrect email and/or password, try again' });
+        } else {
+          this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+        }
       }
     });
   }
