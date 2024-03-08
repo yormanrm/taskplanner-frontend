@@ -10,7 +10,7 @@ import { IJwtToken } from '../../data/authentication-datasource/models/jwt-token
 import { Router } from '@angular/router';
 import { PrimeNGModule } from '../../shared/modules/primeng.module';
 import { FormsMessageErrorsService } from '../../shared/services/forms-message-errors.service';
-import { MessageService } from 'primeng/api';
+import { SweetalertService } from '../../core/services/sweetalert.service';
 
 @Component({
   selector: 'feature-authentication',
@@ -21,7 +21,7 @@ import { MessageService } from 'primeng/api';
     PrimeNGModule
   ],
   providers: [
-    MessageService
+    SweetalertService
   ],
   templateUrl: './authentication.component.html',
   styleUrl: './authentication.component.scss'
@@ -35,7 +35,7 @@ export class AuthenticationComponent {
     private authenticationService: AuthenticationService,
     private formInitializerService: FormInitializerService,
     private storageService: StorageService,
-    private messageService: MessageService,
+    private sweetAlertService: SweetalertService,
     private router: Router,
     public formMessageError: FormsMessageErrorsService
   ) { }
@@ -64,9 +64,9 @@ export class AuthenticationComponent {
         this.logIn();
       }, error: (err: any) => {
         if (err.status === 400) {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'The email entered is already registered, instead please log in' });
+          this.sweetAlertService.toastAlert('The email entered is already registered, instead please log in', 'error', "bottom");
         } else {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+          this.sweetAlertService.toastAlert(err.message, 'error', "bottom");
         }
       }
     });
@@ -75,14 +75,14 @@ export class AuthenticationComponent {
   logIn() {
     this.authenticationService.login(this.formLogin.value as IUserLogin).subscribe({
       next: (data: IJwtToken) => {
-        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Welcome back!' });
+        this.sweetAlertService.toastAlert('Welcome', 'success', "bottom");
         this.storageService.setSessionItem('jwt', data);
         this.router.navigate(['/']);
       }, error: (err: any) => {
         if (err.status === 400) {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Incorrect email and/or password, try again' });
+          this.sweetAlertService.toastAlert('Incorrect email and/or password, try again', 'error', "bottom");
         } else {
-          this.messageService.add({ severity: 'error', summary: 'Error', detail: err.message });
+          this.sweetAlertService.toastAlert(err.message, 'error', "bottom");
         }
       }
     });
