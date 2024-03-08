@@ -75,7 +75,7 @@ export class AuthenticationComponent {
   logIn() {
     this.authenticationService.login(this.formLogin.value as IUserLogin).subscribe({
       next: (data: IJwtToken) => {
-        this.sweetAlertService.toastAlert('Welcome', 'success', "bottom");
+        this.sweetAlertService.toastAlert('Welcome ' + data.name, 'success', "bottom");
         this.storageService.setSessionItem('jwt', data);
         this.router.navigate(['/']);
       }, error: (err: any) => {

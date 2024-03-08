@@ -22,7 +22,7 @@ export class SweetalertService {
       toast: true,
       position: position as SweetAlertPosition,
       showConfirmButton: false,
-      timer: 2500
+      timer: 2750
     });
     Toast.fire({
       icon: icon as SweetAlertIcon,

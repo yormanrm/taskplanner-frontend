@@ -13,7 +13,7 @@ export const routes: Routes = [
             },
             {
                 path: 'dashboard',
-                title: 'Dashboard',
+                title: 'Task planner',
                 loadComponent: () => import('../features/dashboard/dashboard.component').then(c => c.DashboardComponent)
             }
         ]

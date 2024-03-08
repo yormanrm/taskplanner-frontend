@@ -9,7 +9,7 @@ export const loggedInGuard: CanActivateFn = (route, state) => {
   const jwt: IJwtToken = storageService.getSessionItem("jwt");
 
   if (jwt) {
-    return routerService.createUrlTree(['']);
+    return routerService.createUrlTree(['/']);
   }
   return true;
 };
