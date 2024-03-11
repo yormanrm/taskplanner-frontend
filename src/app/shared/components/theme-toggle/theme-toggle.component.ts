@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputSwitchModule } from 'primeng/inputswitch';
-import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
 import { ThemeService } from '../../../core/services/theme.service';
 
 @Component({
@@ -12,14 +12,14 @@ import { ThemeService } from '../../../core/services/theme.service';
     CommonModule,
     FormsModule,
     InputSwitchModule,
-    DropdownModule
-
+    ButtonModule
   ],
   templateUrl: './theme-toggle.component.html',
   styleUrl: './theme-toggle.component.scss',
 })
 export class ThemeToggleComponent {
 
+  @Input() toggleMode: boolean = true;
   
   constructor(public themeService: ThemeService) { }
 

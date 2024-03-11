@@ -1,0 +1,68 @@
+:host ::ng-deep aside {
+    .p-card {
+        @apply tw-fixed tw-inset-y-0 tw-p-5 tw-h-auto tw-w-full xl:tw-w-80 tw-m-0 xl:tw-m-5 tw-rounded-none xl:tw-rounded-md tw-z-20;
+
+        .p-card-body {
+            height: 100%;
+
+            .p-card-content {
+                height: 100%;
+                @apply tw-p-0 tw-flex tw-flex-wrap tw-flex-col tw-justify-between;
+
+                .sidebar-content-wrapper {
+                    .close-mobile-wrapper {
+                        margin: 0.6rem;
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        @apply tw-block xl:tw-hidden;
+                        label {
+                            cursor: pointer;
+                        }
+                    }
+
+                    .header-wrapper {
+                        .header-title {
+                            @apply tw-flex tw-gap-2 tw-justify-center;
+
+                            h3 {
+                                @apply tw-font-semibold tw-text-2xl tw-whitespace-nowrap tw-tracking-tight;
+                            }
+                        }
+
+                        .p-divider {
+                            margin-top: 0;
+                        }
+                    }
+
+                    .links-wrapper {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+
+                        li {
+                            .link {
+                                @apply tw-flex tw-items-center tw-w-full tw-gap-3 tw-no-underline;
+
+                                p {
+                                    @apply tw-text-lg;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .sidebar-signout-wrapper {
+                    .p-button {
+                        @apply tw-w-full;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+:host ::ng-deep main {
+    @apply tw-relative tw-h-full tw-max-h-screen tw-mt-5 tw-mr-5 tw-z-0;
+}

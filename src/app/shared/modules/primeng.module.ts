@@ -7,6 +7,7 @@ import { DividerModule } from 'primeng/divider';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from "primeng/message";
 import { ToastModule } from 'primeng/toast';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { ToastModule } from 'primeng/toast';
         DividerModule,
         MessagesModule,
         MessageModule,
-        ToastModule
+        ToastModule,
+        SidebarModule
     ],
     exports: [
         CardModule,
@@ -27,7 +29,8 @@ import { ToastModule } from 'primeng/toast';
         DividerModule,
         MessagesModule,
         MessageModule,
-        ToastModule
+        ToastModule,
+        SidebarModule
     ]
 })
 export class PrimeNGModule { }

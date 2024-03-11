@@ -1,3 +1,17 @@
-<div class="tw-fixed tw-top-2 tw-right-2">
-    <input class="bulb" type="checkbox" (click)="switchTheme($event)" [checked]="themeService.darkMode">
-</div>
+@if (toggleMode) {
+    <div class="tw-fixed tw-top-2 tw-right-2">
+        <input class="bulb" type="checkbox" (click)="switchTheme($event)" [checked]="themeService.darkMode">
+    </div>
+} @else {
+    <input hidden #checkHiiden type="checkbox" (click)="switchTheme($event)" [checked]="themeService.darkMode">
+    <div class="label-wrapper">
+        <label class="label-toggle" (click)="checkHiiden.click()">
+            {{themeService.darkMode ? 'Light mode' : 'Dark Mode'}}
+        </label>
+    </div>
+}
+
+
+<!-- 47 300 128 60
+
+56 1546 8693 -->

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { PrimeNGModule } from '../../shared/modules/primeng.module';
 import { FormsMessageErrorsService } from '../../shared/services/forms-message-errors.service';
 import { SweetalertService } from '../../core/services/sweetalert.service';
+import { ThemeToggleComponent } from '../../shared/components/theme-toggle/theme-toggle.component';
 
 @Component({
   selector: 'feature-authentication',
@@ -18,7 +19,8 @@ import { SweetalertService } from '../../core/services/sweetalert.service';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    PrimeNGModule
+    PrimeNGModule,
+    ThemeToggleComponent
   ],
   providers: [
     SweetalertService

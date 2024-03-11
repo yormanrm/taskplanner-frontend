@@ -1,34 +1,9 @@
+<shared-theme-toggle [toggleMode]="true"></shared-theme-toggle>
 <main>
     <p-card header="{{registerMode() ? 'Create account' : 'Log In'}}">
 
         @if(registerMode()){
         <form [formGroup]="formRegister" (keyup.enter)="toDoAction()">
-            <!-- 
-
-
-            <span class="p-float-label p-input-filled tw-mb-9">
-                <input class="tw-w-full" pInputText id="email-register" type="email" formControlName="email" />
-                <label for="email-register">Email</label>
-            </span>
-
-            <span class="p-float-label p-input-filled">
-                <p-password id="password-register" formControlName="password" [toggleMask]="true"
-                    [inputStyle]="{'width':'100%'}"
-                    styleClass="p-password p-component p-inputwrapper p-input-icon-right" [style]="{'width':'100%'}">
-                    <ng-template pTemplate="footer">
-                        <p-divider></p-divider>
-                        <p class="tw-mt-2">Suggestions</p>
-                        <ul class="tw-pl-2 tw-ml-2 tw-mt-0" style="line-height: 1.5">
-                            <li>At least one lowercase</li>
-                            <li>At least one uppercase</li>
-                            <li>At least one numeric</li>
-                            <li>At least one symbol</li>
-                            <li>Minimum 8 characters</li>
-                        </ul>
-                    </ng-template>
-                </p-password>
-                <label for="password-register">Password</label>
-            </span> -->
             <section class="p-input-filled tw-mb-5">
                 <label for="firstname-register">First name</label>
                 <input class="tw-block tw-w-full tw-my-1" pInputText id="firstname-register"

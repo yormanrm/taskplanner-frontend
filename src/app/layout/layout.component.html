@@ -1,6 +1,86 @@
-<header>
-    <button (click)="closeSession()">Close session</button>
-</header>
+<aside>
+    <p-card>
+        <section class="sidebar-content-wrapper">
+
+            <div class="close-mobile-wrapper">
+                <label (click)="closeSidebar()">
+                    <shared-svg-template [svg]="'../../assets/svg-icons/x-close.svg'"
+                        [color]="!themeService.darkMode ? '#334155aa' : '#FFFFFFbb'" [width]="'2rem'"
+                        [key]="'closeIcon'">
+                    </shared-svg-template>
+                </label>
+            </div>
+
+            <div class="header-wrapper">
+                <div class="header-title">
+                    <shared-svg-template [svg]="'../../assets/svg-icons/clipboard.svg'"
+                        [color]="!themeService.darkMode ? '#334155aa' : '#FFFFFFbb'" [width]="'2.5rem'"
+                        [key]="'titleIcon'">
+                    </shared-svg-template>
+                    <h3 [ngClass]="!themeService.darkMode ? 'tw-text-slate-700' : 'tw-text-slate-100'">
+                        Task planner
+                    </h3>
+                </div>
+                <p-divider></p-divider>
+            </div>
+
+
+            <ul class="links-wrapper">
+                <li>
+                    <a class="link" href="#">
+                        <shared-svg-template [svg]="'../../assets/svg-icons/dashboard.svg'" [color]="'#6366f1aa'"
+                            [width]="'1.5rem'" [key]="'linkIcon1'">
+                        </shared-svg-template>
+                        <p class="text-lg"
+                            [ngClass]="!themeService.darkMode ? 'tw-text-slate-700' : 'tw-text-slate-100'">Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="link" href="#">
+                        <shared-svg-template [svg]="'../../assets/svg-icons/clock.svg'" [color]="'#ea580caa'"
+                            [width]="'1.5rem'" [key]="'linkIcon2'">
+                        </shared-svg-template>
+                        <p [ngClass]="!themeService.darkMode ? 'tw-text-slate-700' : 'tw-text-slate-100'">To do</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="link" href="#">
+                        <shared-svg-template [svg]="'../../assets/svg-icons/loading-01.svg'" [color]="'#38bdf8aa'"
+                            [width]="'1.5rem'" [key]="'linkIcon3'">
+                        </shared-svg-template>
+                        <p [ngClass]="!themeService.darkMode ? 'tw-text-slate-700' : 'tw-text-slate-100'">Ongoing</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="link" href="#">
+                        <shared-svg-template [svg]="'../../assets/svg-icons/check-circle.svg'" [color]="'#16a34aaa'"
+                            [width]="'1.5rem'" [key]="'linkIcon4'">
+                        </shared-svg-template>
+                        <p [ngClass]="!themeService.darkMode ? 'tw-text-slate-700' : 'tw-text-slate-100'">Completed</p>
+                    </a>
+                </li>
+                <li>
+                    <a class="link" href="#">
+                        <shared-svg-template [svg]="'../../assets/svg-icons/archive.svg'" [color]="'#ca8a04aa'"
+                            [width]="'1.5rem'" [key]="'linkIcon5'">
+                        </shared-svg-template>
+                        <p [ngClass]="!themeService.darkMode ? 'tw-text-slate-700' : 'tw-text-slate-100'">Archived</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="sidebar-signout-wrapper">
+            <shared-theme-toggle [toggleMode]="false"></shared-theme-toggle>
+            <p-button label="Sign Out" (onClick)="closeSession()" ></p-button>
+        </section>
+
+    </p-card>
+</aside>
+
 <main>
-    <router-outlet></router-outlet>
+    <p-card>
+        <button (click)="closeSidebar()">close</button>
+        <router-outlet></router-outlet>
+    </p-card>
 </main>

@@ -6,7 +6,7 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class ThemeService {
-  darkMode: boolean = false;
+  public darkMode: boolean = false;
 
   constructor(@Inject(DOCUMENT) private document: Document, private storageService: StorageService) {
     let theme = storageService.getLocalItem("theme");
