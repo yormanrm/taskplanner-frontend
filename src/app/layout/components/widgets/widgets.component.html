@@ -39,7 +39,7 @@
         </p-card>
         <p-card>
             <p-inputGroup>
-                <input type="text" pInputText placeholder="Search" />
+                <input type="text" pInputText placeholder="Search" (keydown)="taskLocalService.onTypeSearchBar($event)"/>
                 <p-inputGroupAddon>
                     <shared-svg-template [color]="!themeService.darkMode ? '#334155aa' : '#FFFFFFbb'"
                         [key]="'searchIconWidget'" [width]="'1.25rem'" [svg]="'../../../assets/svg-icons/search-lg.svg'">

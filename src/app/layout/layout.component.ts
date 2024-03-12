@@ -9,6 +9,7 @@ import { SvgTemplateComponent } from '../shared/components/svg-template/svg-temp
 import { ThemeService } from '../core/services/theme.service';
 import { ThemeToggleComponent } from '../shared/components/theme-toggle/theme-toggle.component';
 import { WidgetsComponent } from './components/widgets/widgets.component';
+import { TaskLocalService } from '../data/task-datasource/service/task-local.service';
 
 @Component({
   selector: 'app-layout',
@@ -26,20 +27,12 @@ import { WidgetsComponent } from './components/widgets/widgets.component';
 })
 export class LayoutComponent implements AfterViewInit {
   mobileView: boolean = false;
-  dateOptions = [
-    { name: 'Today', code: 'today' },
-    { name: 'Yesterday', code: 'yesterday' },
-    { name: 'This week', code: 'weekA' },
-    { name: 'Last week', code: 'weekB' },
-    { name: 'This month', code: 'monthA' },
-    { name: 'Last month', code: 'monthB' },
-    { name: 'This year', code: 'year' },
-    { name: 'Custom range', code: 'range' },
-  ];
+  @ViewChild(WidgetsComponent) widgetsComponent!: WidgetsComponent;
   constructor(
     private storageService: StorageService,
     public themeService: ThemeService,
     private sweetAlertService: SweetalertService,
+    public taskLocalService: TaskLocalService,
     private router: Router,
     private renderer: Renderer2, private el: ElementRef
   ) { }

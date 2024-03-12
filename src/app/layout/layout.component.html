@@ -26,14 +26,14 @@
 
             <div class="filters-mobile-wrapper xl:tw-hidden">
                 <p-inputGroup>
-                    <input type="text" pInputText placeholder="Search" />
+                    <input type="text" pInputText placeholder="Search" (keydown)="taskLocalService.onTypeSearchBar($event)"/>
                     <p-inputGroupAddon>
                         <shared-svg-template [color]="!themeService.darkMode ? '#334155aa' : '#FFFFFFbb'"
                             [key]="'searchIconWidget'" [width]="'1rem'" [svg]="'../../../assets/svg-icons/search-lg.svg'">
                         </shared-svg-template>
                     </p-inputGroupAddon>
                 </p-inputGroup>
-                <p-dropdown [options]="dateOptions" optionLabel="name"
+                <p-dropdown (onChange)="widgetsComponent.onChangeDateFilter($event)" [options]="widgetsComponent?.dateOptions" optionLabel="name"
                 placeholder="Date range picker"></p-dropdown>
             </div>
 
