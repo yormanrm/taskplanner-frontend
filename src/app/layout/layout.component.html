@@ -1,5 +1,5 @@
 <aside>
-    <p-card>
+    <p-card class="sidebar-wrapper">
         <section class="sidebar-content-wrapper">
 
             <div class="close-mobile-wrapper">
@@ -22,6 +22,19 @@
                     </h3>
                 </div>
                 <p-divider></p-divider>
+            </div> 
+
+            <div class="filters-mobile-wrapper xl:tw-hidden">
+                <p-inputGroup>
+                    <input type="text" pInputText placeholder="Search" />
+                    <p-inputGroupAddon>
+                        <shared-svg-template [color]="!themeService.darkMode ? '#334155aa' : '#FFFFFFbb'"
+                            [key]="'searchIconWidget'" [width]="'1rem'" [svg]="'../../../assets/svg-icons/search-lg.svg'">
+                        </shared-svg-template>
+                    </p-inputGroupAddon>
+                </p-inputGroup>
+                <p-dropdown [options]="dateOptions" optionLabel="name"
+                placeholder="Date range picker"></p-dropdown>
             </div>
 
 
@@ -79,8 +92,8 @@
 </aside>
 
 <main>
+    <layout-widgets (openSB)="closeSidebar()"></layout-widgets>
     <p-card>
-        <button (click)="closeSidebar()">close</button>
         <router-outlet></router-outlet>
     </p-card>
 </main>

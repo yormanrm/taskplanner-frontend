@@ -1,0 +1,77 @@
+<nav class="tw-flex tw-justify-between xl:tw-justify-end tw-items-center tw-mb-5">
+
+    <section class="menu-button-wrapper xl:tw-hidden">
+        <label (click)="openSidebar()">
+            <shared-svg-template [svg]="'../../../assets/svg-icons/menu-01.svg'"
+                [color]="themeService.darkMode ? '#1F2937' : '#FFFFFF'" [width]="'1.75rem'" [key]="'menuIcon'">
+            </shared-svg-template>
+        </label>
+    </section>
+
+
+    <section class="widgets-wrapper tw-hidden xl:tw-flex tw-flex-wrap tw-items-center tw-gap-5">
+        <p-card>
+            <p-button [text]="true" severity="secondary"
+                (onClick)="taskLocalService.sortTasks('name', (taskLocalService.ascSortName = !taskLocalService.ascSortName))">
+                <div class="p-button-label tw-flex tw-justify-between tw-items-center tw-gap-1">
+                    <span>Order by name</span>
+                    <shared-svg-template [color]="!themeService.darkMode ? '#64748B' : '#94A3B8'" [key]="'ascSortName'"
+                        [width]="'1.5rem'"
+                        [svg]="taskLocalService.ascSortName ? '../../../assets/svg-icons/arrow-narrow-up.svg' : '../../../../assets/svg-icons/arrow-narrow-down.svg'">
+                    </shared-svg-template>
+                </div>
+            </p-button>
+        </p-card>
+        <p-card>
+            <p-button [text]="true" severity="secondary"
+                (onClick)="taskLocalService.sortTasks('date', (taskLocalService.ascSortDate = !taskLocalService.ascSortDate))">
+                <div class="p-button-label tw-flex tw-justify-between tw-items-center tw-gap-1">
+                    <span>Order by date</span>
+                    <shared-svg-template [color]="!themeService.darkMode ? '#64748B' : '#94A3B8'" [key]="'ascSortDate'"
+                        [width]="'1.5rem'"
+                        [svg]="taskLocalService.ascSortDate ? '../../../assets/svg-icons/arrow-narrow-up.svg' : '../../../../assets/svg-icons/arrow-narrow-down.svg'"></shared-svg-template>
+                </div>
+            </p-button>
+        </p-card>
+        <p-card>
+            <p-dropdown (onChange)="onChangeDateFilter($event)" [options]="dateOptions" optionLabel="name"
+                placeholder="Date range picker"></p-dropdown>
+        </p-card>
+        <p-card>
+            <p-inputGroup>
+                <input type="text" pInputText placeholder="Search" />
+                <p-inputGroupAddon>
+                    <shared-svg-template [color]="!themeService.darkMode ? '#334155aa' : '#FFFFFFbb'"
+                        [key]="'searchIconWidget'" [width]="'1.25rem'" [svg]="'../../../assets/svg-icons/search-lg.svg'">
+                    </shared-svg-template>
+                </p-inputGroupAddon>
+            </p-inputGroup>
+        </p-card>
+    </section>
+
+    <section class="widgets-wrapper tw-flex xl:tw-hidden tw-flex-wrap tw-items-center tw-gap-5">
+        <p-card>
+            <p-button [text]="true" severity="secondary"
+                (onClick)="taskLocalService.sortTasks('name', (taskLocalService.ascSortName = !taskLocalService.ascSortName))">
+                <div class="p-button-label tw-flex tw-justify-between tw-items-center tw-gap-1">
+                    <span>By name</span>
+                    <shared-svg-template [color]="!themeService.darkMode ? '#64748B' : '#94A3B8'" [key]="'ascSortName'"
+                        [width]="'1.5rem'"
+                        [svg]="taskLocalService.ascSortName ? '../../../assets/svg-icons/arrow-narrow-up.svg' : '../../../../assets/svg-icons/arrow-narrow-down.svg'">
+                    </shared-svg-template>
+                </div>
+            </p-button>
+        </p-card>
+        <p-card>
+            <p-button [text]="true" severity="secondary"
+                (onClick)="taskLocalService.sortTasks('date', (taskLocalService.ascSortDate = !taskLocalService.ascSortDate))">
+                <div class="p-button-label tw-flex tw-justify-between tw-items-center tw-gap-1">
+                    <span>By date</span>
+                    <shared-svg-template [color]="!themeService.darkMode ? '#64748B' : '#94A3B8'" [key]="'ascSortDate'"
+                        [width]="'1.5rem'"
+                        [svg]="taskLocalService.ascSortDate ? '../../../assets/svg-icons/arrow-narrow-up.svg' : '../../../../assets/svg-icons/arrow-narrow-down.svg'"></shared-svg-template>
+                </div>
+            </p-button>
+        </p-card>
+    </section>
+</nav>

@@ -8,6 +8,7 @@ import { PrimeNGModule } from '../shared/modules/primeng.module';
 import { SvgTemplateComponent } from '../shared/components/svg-template/svg-template.component';
 import { ThemeService } from '../core/services/theme.service';
 import { ThemeToggleComponent } from '../shared/components/theme-toggle/theme-toggle.component';
+import { WidgetsComponent } from './components/widgets/widgets.component';
 
 @Component({
   selector: 'app-layout',
@@ -16,6 +17,7 @@ import { ThemeToggleComponent } from '../shared/components/theme-toggle/theme-to
     CommonModule,
     RouterModule,
     PrimeNGModule,
+    WidgetsComponent,
     ThemeToggleComponent,
     SvgTemplateComponent
   ],
@@ -24,7 +26,16 @@ import { ThemeToggleComponent } from '../shared/components/theme-toggle/theme-to
 })
 export class LayoutComponent implements AfterViewInit {
   mobileView: boolean = false;
-
+  dateOptions = [
+    { name: 'Today', code: 'today' },
+    { name: 'Yesterday', code: 'yesterday' },
+    { name: 'This week', code: 'weekA' },
+    { name: 'Last week', code: 'weekB' },
+    { name: 'This month', code: 'monthA' },
+    { name: 'Last month', code: 'monthB' },
+    { name: 'This year', code: 'year' },
+    { name: 'Custom range', code: 'range' },
+  ];
   constructor(
     private storageService: StorageService,
     public themeService: ThemeService,

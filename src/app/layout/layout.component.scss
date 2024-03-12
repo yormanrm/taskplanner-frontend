@@ -35,6 +35,26 @@
                         }
                     }
 
+                    .filters-mobile-wrapper {
+                        @apply tw-mb-5;
+                        .p-inputgroup {
+                            height: 3rem;
+                            @apply tw-w-full tw-mb-3.5;
+                            input {
+                                @apply tw-font-semibold tw-text-sm;
+                                box-shadow: none;
+                            }
+                            .p-inputgroup-addon {
+                                box-shadow: none;
+                            }
+                        }
+                        .p-dropdown {
+                            height: 3rem;
+                            @apply tw-w-full tw-font-semibold tw-text-sm;
+                            box-shadow: none;
+                        }
+                    }
+
                     .links-wrapper {
                         list-style: none;
                         padding: 0;

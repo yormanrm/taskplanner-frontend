@@ -1,0 +1,37 @@
+:host ::ng-deep nav {
+    .menu-button-wrapper {
+        label {
+            @apply tw-cursor-pointer;
+        }
+    }
+
+    .widgets-wrapper {
+        .p-card {
+            @apply tw-h-12 tw-flex tw-items-center;
+            .p-card-body {
+                @apply tw-p-0;
+                .p-card-content {
+                    @apply tw-p-0;
+                    .p-button {
+                        @apply tw-text-sm xl:tw-text-base tw-w-fit xl:tw-w-60;
+                    }
+                    .p-dropdown {
+                        @apply tw-w-60 tw-font-bold tw-bg-transparent tw-border-none;
+                        box-shadow: none;
+                    }
+                    .p-inputgroup {
+                        @apply tw-w-60;
+                        input {
+                            @apply tw-bg-transparent tw-border-none tw-font-bold;
+                            box-shadow: none;
+                        }
+                        .p-inputgroup-addon {
+                            @apply tw-bg-transparent tw-border-none;
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

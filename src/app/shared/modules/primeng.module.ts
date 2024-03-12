@@ -8,6 +8,9 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from "primeng/message";
 import { ToastModule } from 'primeng/toast';
 import { SidebarModule } from 'primeng/sidebar';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 
 @NgModule({
     imports: [
@@ -19,7 +22,10 @@ import { SidebarModule } from 'primeng/sidebar';
         MessagesModule,
         MessageModule,
         ToastModule,
-        SidebarModule
+        SidebarModule,
+        DropdownModule,
+        InputGroupModule,
+        InputGroupAddonModule
     ],
     exports: [
         CardModule,
@@ -30,7 +36,10 @@ import { SidebarModule } from 'primeng/sidebar';
         MessagesModule,
         MessageModule,
         ToastModule,
-        SidebarModule
+        SidebarModule,
+        DropdownModule,
+        InputGroupModule,
+        InputGroupAddonModule
     ]
 })
 export class PrimeNGModule { }
