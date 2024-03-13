@@ -1,1 +1,44 @@
-<p>dashboard works!</p>
+@if (existFilter()) {
+    <p-card>
+        @for (task of filteredTask(); track $index) {
+            <div class="task">
+                <p>Task name: {{task.name}}</p>
+                <p>Status: {{task.status}}</p>
+                <p>Date: {{task.dateCreated | date:'dd/MM/yyyy'}}</p>
+            </div>
+            } @empty {
+            <h2 class="tw-text-center">No tasks related to the selected filters were found</h2>
+            }
+    </p-card>
+} @else {
+    @if (almostready().length === 0 && justarrived().length === 0) {
+        <p-card>
+            <h2>
+                Come on, why don't you create your first task?
+            </h2>
+        </p-card>
+        } @else {
+        <p-card header="Almost ready" styleClass="tw-mb-5" *ngIf="almostready().length > 0">
+            @for (task of almostready(); track $index) {
+            <div class="task">
+                <p>Task name: {{task.name}}</p>
+                <p>Status: {{task.status}}</p>
+                <p>Date: {{task.dateCreated | date:'dd/MM/yyyy'}}</p>
+            </div>
+            } @empty {
+            <h2 class="tw-text-center">No tasks with 80% of completed</h2>
+            }
+        </p-card>
+        <p-card header="Just arrived">
+            @for (task of justarrived(); track $index) {
+            <div class="task">
+                <p>Task name: {{task.name}}</p>
+                <p>Status: {{task.status}}</p>
+                <p>Date: {{task.dateCreated | date:'dd/MM/yyyy'}}</p>
+            </div>
+            } @empty {
+            <h2 class="tw-text-center">No tasks added recently</h2>
+            }
+        </p-card>
+        }
+}

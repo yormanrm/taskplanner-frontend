@@ -10,7 +10,7 @@
 
 
     <section class="widgets-wrapper tw-hidden xl:tw-flex tw-flex-wrap tw-items-center tw-gap-5">
-        <p-card>
+        <p-card *ngIf="taskLocalService.existFilter() && taskLocalService.localTasks().length > 0">
             <p-button [text]="true" severity="secondary"
                 (onClick)="taskLocalService.sortTasks('name', (taskLocalService.ascSortName = !taskLocalService.ascSortName))">
                 <div class="p-button-label tw-flex tw-justify-between tw-items-center tw-gap-1">
@@ -22,7 +22,7 @@
                 </div>
             </p-button>
         </p-card>
-        <p-card>
+        <p-card *ngIf="taskLocalService.existFilter() && taskLocalService.localTasks().length > 0">
             <p-button [text]="true" severity="secondary"
                 (onClick)="taskLocalService.sortTasks('date', (taskLocalService.ascSortDate = !taskLocalService.ascSortDate))">
                 <div class="p-button-label tw-flex tw-justify-between tw-items-center tw-gap-1">
@@ -34,7 +34,7 @@
             </p-button>
         </p-card>
         <p-card>
-            <p-dropdown (onChange)="onChangeDateFilter($event)" [options]="dateOptions" optionLabel="name"
+            <p-dropdown (onChange)="onChangeDateFilter($event)" [showClear]="true" [options]="dateOptions" optionLabel="name"
                 placeholder="Date range picker"></p-dropdown>
         </p-card>
         <p-card>

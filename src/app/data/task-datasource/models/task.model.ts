@@ -6,6 +6,8 @@ export interface ITask {
     activities: IActivity[];
     dateCreated: string | null;
     dateUpdated: string | null;
+    archived: boolean;
+    percentage: number;
     userId: number;
 }
 

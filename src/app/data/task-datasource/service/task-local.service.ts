@@ -9,8 +9,9 @@ import { sorting } from '../../../shared/utils/sorting-function';
 export class TaskLocalService {
   private taskApiService = inject(TaskAPIService);
 
-  public tasks: WritableSignal<ITask[]> = signal<ITask[]>([]);
+  public localTasks: WritableSignal<ITask[]> = signal<ITask[]>([]);
   public searchText: WritableSignal<string> = signal<string>("");
+  public existFilter: WritableSignal<boolean> = signal<boolean>(false);
   public ascSortName: boolean = false;
   public ascSortDate: boolean = false;
 
@@ -21,7 +22,7 @@ export class TaskLocalService {
   getTasks(): void {
     this.taskApiService.getTasks().subscribe({
       next: (data: ITask[]) => {
-        this.tasks.set(data);
+        this.localTasks.set(data);
         this.sortTasks("date", false);
       }, error: (err: any) => {
         console.log(err);
@@ -35,8 +36,10 @@ export class TaskLocalService {
       this.searchText.update((value) => value = text.value);
       if (this.searchText() === '' || this.searchText === null) {
         this.getTasks();
+        this.existFilter.set(false);
       } else {
         this.filterBySearchBar();
+        this.existFilter.set(true);
       }
     }, 900);
   }
@@ -44,7 +47,7 @@ export class TaskLocalService {
   filterBySearchBar() {
     this.taskApiService.getTaskBySearch(this.searchText()).subscribe({
       next: (data: ITask[]) => {
-        this.tasks.set(data);
+        this.localTasks.set(data);
         this.sortTasks("date", false);
       }, error: (err: any) => {
         console.log(err);
@@ -56,7 +59,7 @@ export class TaskLocalService {
     const option = event.target as HTMLInputElement;
     this.taskApiService.getTaskByStatus(option.value).subscribe({
       next: (data: ITask[]) => {
-        this.tasks.set(data);
+        this.localTasks.set(data);
         this.sortTasks("date", false);
       }, error: (err: any) => {
         console.log(err);
@@ -65,9 +68,10 @@ export class TaskLocalService {
   }
 
   filterByDatesRange(startDate: string, endDate: string) {
+    this.existFilter.set(true);
     this.taskApiService.getTaskByDatesRange(startDate, endDate).subscribe({
       next: (data: ITask[]) => {
-        this.tasks.set(data);
+        this.localTasks.set(data);
         this.sortTasks("date", false);
       }, error: (err: any) => {
         console.log(err);
@@ -77,13 +81,13 @@ export class TaskLocalService {
 
   sortTasks(property: string, asc: boolean) {
     if (property === 'name') {
-      this.tasks.update((value) =>
+      this.localTasks.update((value) =>
         value = value.sort((a, b) => {
           return sorting(a.name, b.name, asc);
         })
       );
     } else {
-      this.tasks.update((value) =>
+      this.localTasks.update((value) =>
         value = value.sort((a, b) => {
           return sorting(a.dateCreated!, b.dateCreated!, asc);
         })

@@ -11,6 +11,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
         SidebarModule,
         DropdownModule,
         InputGroupModule,
-        InputGroupAddonModule
+        InputGroupAddonModule,
+        CarouselModule
     ],
     exports: [
         CardModule,
@@ -39,7 +41,8 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
         SidebarModule,
         DropdownModule,
         InputGroupModule,
-        InputGroupAddonModule
+        InputGroupAddonModule,
+        CarouselModule
     ]
 })
 export class PrimeNGModule { }

@@ -40,59 +40,64 @@ export class WidgetsComponent {
   }
 
   onChangeDateFilter(event: any) {
-    let formatDates = { start: '', end: '' };
-    let startDate: string = '';
-    let endDate: string = '';
-    const selectedOption = event.value.code;
-    switch (selectedOption) {
-      case "today":
-        startDate = formatDate(this.today);
-        endDate = formatDate(this.today);
-        break;
+    const selectedOption = event.value;
+    if (selectedOption != null) {
+      let formatDates = { start: '', end: '' };
+      let startDate: string = '';
+      let endDate: string = '';
 
-      case "yesterday":
-        const yesterday = new Date();
-        yesterday.setDate(this.today.getDate() - 1);
-        startDate = formatDate(yesterday);
-        endDate = formatDate(yesterday);
-        break;
+      switch (selectedOption.code) {
+        case "today":
+          startDate = formatDate(this.today);
+          endDate = formatDate(this.today);
+          break;
 
-      case "weekA":
-        formatDates = getCurrentWeek(this.today);
-        startDate = formatDates.start;
-        endDate = formatDates.end;
-        break;
+        case "yesterday":
+          const yesterday = new Date();
+          yesterday.setDate(this.today.getDate() - 1);
+          startDate = formatDate(yesterday);
+          endDate = formatDate(yesterday);
+          break;
 
-      case "weekB":
-        formatDates = getLastWeek(this.today);
-        startDate = formatDates.start;
-        endDate = formatDates.end;
-        break;
+        case "weekA":
+          formatDates = getCurrentWeek(this.today);
+          startDate = formatDates.start;
+          endDate = formatDates.end;
+          break;
 
-      case "monthA":
-        formatDates = getThisMonth(this.today);
-        startDate = formatDates.start;
-        endDate = formatDates.end;
-        break;
+        case "weekB":
+          formatDates = getLastWeek(this.today);
+          startDate = formatDates.start;
+          endDate = formatDates.end;
+          break;
 
-      case "monthB":
-        formatDates = getLastMonth(this.today);
-        startDate = formatDates.start;
-        endDate = formatDates.end;
-        break;
+        case "monthA":
+          formatDates = getThisMonth(this.today);
+          startDate = formatDates.start;
+          endDate = formatDates.end;
+          break;
 
-      case "year":
-        formatDates = getThisYear(this.today);
-        startDate = formatDates.start;
-        endDate = formatDates.end;
-        break;
+        case "monthB":
+          formatDates = getLastMonth(this.today);
+          startDate = formatDates.start;
+          endDate = formatDates.end;
+          break;
 
-      case "range":
-        break;
+        case "year":
+          formatDates = getThisYear(this.today);
+          startDate = formatDates.start;
+          endDate = formatDates.end;
+          break;
 
-    }
-    if (selectedOption != 'range') {
-      this.taskLocalService.filterByDatesRange(startDate, endDate);
+        case "range":
+          break;
+      }
+      if (selectedOption != 'range') {
+        this.taskLocalService.filterByDatesRange(startDate, endDate);
+      }
+    } else {
+      this.taskLocalService.existFilter.set(false);
+      this.taskLocalService.getTasks();
     }
   }
 
