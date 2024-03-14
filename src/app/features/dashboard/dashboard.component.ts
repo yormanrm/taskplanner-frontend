@@ -20,9 +20,6 @@ import { formatDate } from '../../shared/utils/format-dates.function';
 })
 
 export class DashboardComponent {
-  
-  private task_local_service = inject(TaskLocalService);
-  private datePipe = inject(DatePipe);
 
   public almostready: Signal<ITask[]> = computed(() => this.task_local_service.localTasks().filter(
     (task) => task.percentage > 80
@@ -49,5 +46,10 @@ export class DashboardComponent {
   public existFilter: Signal<boolean> = computed(() => this.task_local_service.existFilter());
 
   public filteredTask: Signal<ITask[]> = computed(() => this.task_local_service.localTasks());
+
+  constructor(private task_local_service: TaskLocalService, private datePipe: DatePipe){
+    task_local_service.archived.set(false);
+    task_local_service.getTasks();
+  }
 
 }

@@ -40,7 +40,7 @@
 
             <ul class="links-wrapper">
                 <li>
-                    <a class="link" href="#">
+                    <a class="link" [routerLink]="['/']">
                         <shared-svg-template [svg]="'../../assets/svg-icons/dashboard.svg'" [color]="'#6366f1aa'"
                             [width]="'1.5rem'" [key]="'linkIcon1'">
                         </shared-svg-template>
@@ -49,7 +49,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="link" href="#">
+                    <a class="link" [routerLink]="['/tasks', 'TODO']">
                         <shared-svg-template [svg]="'../../assets/svg-icons/clock.svg'" [color]="'#ea580caa'"
                             [width]="'1.5rem'" [key]="'linkIcon2'">
                         </shared-svg-template>
@@ -57,7 +57,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="link" href="#">
+                    <a class="link" [routerLink]="['/tasks', 'ONGOING']">
                         <shared-svg-template [svg]="'../../assets/svg-icons/loading-01.svg'" [color]="'#38bdf8aa'"
                             [width]="'1.5rem'" [key]="'linkIcon3'">
                         </shared-svg-template>
@@ -65,7 +65,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="link" href="#">
+                    <a class="link" [routerLink]="['/tasks', 'COMPLETED']">
                         <shared-svg-template [svg]="'../../assets/svg-icons/check-circle.svg'" [color]="'#16a34aaa'"
                             [width]="'1.5rem'" [key]="'linkIcon4'">
                         </shared-svg-template>
@@ -73,7 +73,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="link" href="#">
+                    <a class="link" [routerLink]="['/tasks', 'ARCHIVED']">
                         <shared-svg-template [svg]="'../../assets/svg-icons/archive.svg'" [color]="'#ca8a04aa'"
                             [width]="'1.5rem'" [key]="'linkIcon5'">
                         </shared-svg-template>

@@ -12,15 +12,12 @@ export class TaskLocalService {
   public localTasks: WritableSignal<ITask[]> = signal<ITask[]>([]);
   public searchText: WritableSignal<string> = signal<string>("");
   public existFilter: WritableSignal<boolean> = signal<boolean>(false);
+  public archived: WritableSignal<boolean> = signal<boolean>(false);
   public ascSortName: boolean = false;
   public ascSortDate: boolean = false;
 
-  constructor() {
-    this.getTasks();
-  }
-
   getTasks(): void {
-    this.taskApiService.getTasks().subscribe({
+    this.taskApiService.getTasks(this.archived()).subscribe({
       next: (data: ITask[]) => {
         this.localTasks.set(data);
         this.sortTasks("date", false);
@@ -45,7 +42,7 @@ export class TaskLocalService {
   }
 
   filterBySearchBar() {
-    this.taskApiService.getTaskBySearch(this.searchText()).subscribe({
+    this.taskApiService.getTaskBySearch(this.searchText(), this.archived()).subscribe({
       next: (data: ITask[]) => {
         this.localTasks.set(data);
         this.sortTasks("date", false);
@@ -57,7 +54,11 @@ export class TaskLocalService {
 
   filterByStatus(event: Event) {
     const option = event.target as HTMLInputElement;
-    this.taskApiService.getTaskByStatus(option.value).subscribe({
+    this.byStatusTrigger(option.value);
+  }
+
+  byStatusTrigger(status: string){
+    this.taskApiService.getTaskByStatus(status, this.archived()).subscribe({
       next: (data: ITask[]) => {
         this.localTasks.set(data);
         this.sortTasks("date", false);

@@ -18,8 +18,9 @@ export class TaskAPIService {
     return this.http.post<ITask>(this.url + "/save", body);
   }
 
-  getTasks(): Observable<ITask[]> {
-    return this.http.get<ITask[]>(this.url + "/get/all");
+  getTasks(archived: boolean): Observable<ITask[]> {
+    const params = this.paramsBuilder.builder({archived})
+    return this.http.get<ITask[]>(this.url + "/get/all", {params: params});
   }
 
   getATask(id: number): Observable<ITask> {
@@ -27,13 +28,13 @@ export class TaskAPIService {
     return this.http.get<ITask>(this.url + "/get/byId", { params: params });
   }
 
-  getTaskByStatus(status: string): Observable<ITask[]> {
-    const params = this.paramsBuilder.builder({ status });
+  getTaskByStatus(status: string, archived: boolean): Observable<ITask[]> {
+    const params = this.paramsBuilder.builder({ status, archived });
     return this.http.get<ITask[]>(this.url + "/get/byStatus", { params: params });
   }
 
-  getTaskBySearch(search: string): Observable<ITask[]> {
-    const params = this.paramsBuilder.builder({ search });
+  getTaskBySearch(search: string, archived: boolean): Observable<ITask[]> {
+    const params = this.paramsBuilder.builder({ search, archived });
     return this.http.get<ITask[]>(this.url + "/get/bySearch", { params: params });
   }
 

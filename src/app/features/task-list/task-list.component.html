@@ -1,0 +1,11 @@
+<p-card header="Tasks with {{statusParam}} status">
+    @for (task of tasks(); track $index) {
+        <div class="task">
+            <p>Task name: {{task.name}}</p>
+            <p>Status: {{task.status}}</p>
+            <p>Date: {{task.dateCreated | date:'dd/MM/yyyy'}}</p>
+        </div>
+        } @empty {
+        <h2 class="tw-text-center">No tasks with 80% of completed</h2>
+        }
+</p-card>
